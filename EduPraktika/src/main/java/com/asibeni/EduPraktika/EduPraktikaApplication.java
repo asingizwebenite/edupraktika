@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @SpringBootApplication
 @EnableJpaRepositories("com.asibeni.EduPraktika.repositories")
@@ -28,31 +28,20 @@ public class EduPraktikaApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(UserRepository userRepo, CourseRepository courseRepo) {
 		return args -> {
-			User user1 = new User("Mugisha", "Mike", "at@gmail.com", "1234", "0788567889");
+			Address address = new Address("Rwamagana","muyumbu","rwanda","rwamagana");
+			User user1 = new User("Mugisha", "Mike","mugishamike", "at@gmail.com", "0788567889", address,"ioguf yx");
 			userRepo.save(user1);
-			User user4 = new User("me", "be", "aat@gmail.com", "1234", "0784597889");
-			User user5 = new User("you", "ni", "art@gmail.com", "1234", "0734567889");
-			User user6 = new User("us", "te", "abt@gmail.com", "1234", "0784567189");
+			User user2 = new User("Mugisha", "Mike","mugimike", "meat@gmail.com", "0788467889", address,"ioguf yx");
             List<User> users = new ArrayList<User>();
 			users.add(user1);
-			users.add(user4);
-			users.add(user5);
-			users.add(user6);
+			users.add(user2);
 			userRepo.saveAll(users);
 			List<User>  allUsers = userRepo.findAll();
 			for(User user : allUsers) {
 				System.out.println(user.getEmail() + " " + user.getFirstName() + " " + user.getLastName()) ;
 			}
-			User user2 = userRepo.findByEmail("me@gmail.com");
-			Address address = new Address("Rwamagana","muyumbu","101P","rwamagana");
-			User user3 = new User("us", "te", "abt@gmail.com", "1234", "0784567189", address);
-			userRepo.save(user3);
-			System.out.println(user3.getAddress().getDistrict());
 			Information information = new Information("2023","Level 4");
-
-			User user = new User("beniteuser", "benite", "user@gmail.com", "1234", "0784567189", address);
-			userRepo.save(user);
-			Course course = new Course("math",information,user);
+			Course course = new Course("math",information,user2);
 			courseRepo.save(course);
 			List<Course> courses = courseRepo.findAll();
 			for(Course c : courses) {

@@ -8,28 +8,26 @@ public class User {
     private int id;
     private String firstName;
     private String lastName;
+    @Column(unique = true)
+    private String username;
+    @Column(unique = true)
     private String email;
-    private String password;
+    @Column(unique = true)
     private String phone;
     @Embedded
     private Address address;
+    private String password;
+
     public User() {}
-    public User(String firstName, String lastName, String email, String password, String phone) {
+
+    public User(String firstName, String lastName, String username, String email, String phone, Address address, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
-        this.password = password;
-        this.phone = phone;
-
-    }
-
-    public User(String firstName, String lastName, String email, String password, String phone,Address address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
         this.phone = phone;
         this.address = address;
+        this.password = password;
     }
 
     public Address getAddress() {
@@ -64,6 +62,10 @@ public class User {
         this.lastName = lastName;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -72,19 +74,23 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+}
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

@@ -1,20 +1,19 @@
 package com.asibeni.EduPraktika.model;
 
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
 
 @Embeddable
 public class Address {
     private String district;
     private String sector;
-    private String streetNo;
+    private String country;
     private String city;
 
     public Address() {}
-    public Address(String district, String sector, String streetNo, String city) {
+    public Address(String district, String sector, String country, String city) {
         this.district = district;
         this.sector = sector;
-        this.streetNo = streetNo;
+        this.country = country;
         this.city = city;
     }
 
@@ -34,12 +33,12 @@ public class Address {
         this.sector = sector;
     }
 
-    public String getStreetNo() {
-        return streetNo;
+    public String getCountry() {
+        return country;
     }
 
-    public void setStreetNo(String streetNo) {
-        this.streetNo = streetNo;
+    public void setCountry(String streetNo) {
+        this.country = country;
     }
 
     public String getCity() {

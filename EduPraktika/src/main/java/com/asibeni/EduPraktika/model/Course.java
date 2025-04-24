@@ -16,6 +16,16 @@ public class Course {
     @JsonManagedReference
     User creator;
 
+    private String videoUrl;
+
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+
     public Course(String name, Information information, User creator) {
         this.name = name;
         this.information = information;
